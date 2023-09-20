@@ -13,3 +13,4 @@ image = pipe(prompt).images[0]  # image here is in [PIL format](https://pillow.r
 
 # Saving the image 
 image.save(f"{prompt}.png")
+# thjis is test comment 
