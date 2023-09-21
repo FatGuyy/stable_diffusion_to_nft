@@ -1,2 +1,2 @@
-local_runable:
+setup_locally:
 	mv auth_example.py auth.py

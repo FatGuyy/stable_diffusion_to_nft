@@ -1,0 +1,160 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "test/Counter.t.sol",
+    "id": 31529,
+    "exportedSymbols": {
+      "Address": [
+        1775
+      ],
+      "Context": [
+        1797
+      ],
+      "Counters": [
+        1871
+      ],
+      "DSTest": [
+        4894
+      ],
+      "ERC165": [
+        2124
+      ],
+      "ERC721": [
+        1128
+      ],
+      "ERC721URIStorage": [
+        1418
+      ],
+      "IERC165": [
+        2136
+      ],
+      "IERC4906": [
+        198
+      ],
+      "IERC721": [
+        1244
+      ],
+      "IERC721Metadata": [
+        1445
+      ],
+      "IERC721Receiver": [
+        1262
+      ],
+      "Math": [
+        3002
+      ],
+      "MyNFT": [
+        60
+      ],
+      "Ownable": [
+        173
+      ],
+      "SignedMath": [
+        3107
+      ],
+      "StdAssertions": [
+        6405
+      ],
+      "StdChains": [
+        7099
+      ],
+      "StdCheats": [
+        9330
+      ],
+      "StdInvariant": [
+        9620
+      ],
+      "StdStorage": [
+        10370
+      ],
+      "StdStyle": [
+        13014
+      ],
+      "StdUtils": [
+        13821
+      ],
+      "Strings": [
+        2100
+      ],
+      "Test": [
+        13870
+      ],
+      "TestBase": [
+        4954
+      ],
+      "Vm": [
+        15182
+      ],
+      "console": [
+        23246
+      ],
+      "console2": [
+        31342
+      ],
+      "stdError": [
+        9396
+      ],
+      "stdJson": [
+        10196
+      ],
+      "stdMath": [
+        10338
+      ],
+      "stdStorage": [
+        11803
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:537:37",
+    "nodes": [
+      {
+        "id": 31526,
+        "nodeType": "PragmaDirective",
+        "src": "39:24:37",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".13"
+        ]
+      },
+      {
+        "id": 31527,
+        "nodeType": "ImportDirective",
+        "src": "65:28:37",
+        "nodes": [],
+        "absolutePath": "lib/openzeppelin-contracts/lib/forge-std/src/Test.sol",
+        "file": "forge-std/Test.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 31529,
+        "sourceUnit": 13871,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 31528,
+        "nodeType": "ImportDirective",
+        "src": "94:38:37",
+        "nodes": [],
+        "absolutePath": "contracts/src/Counter.sol",
+        "file": "../contracts/src/Counter.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 31529,
+        "sourceUnit": 61,
+        "symbolAliases": [],
+        "unitAlias": ""
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 37
+}
