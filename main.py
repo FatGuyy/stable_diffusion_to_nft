@@ -1,15 +1,21 @@
+import os
 import torch
+from authtoken import auth_token
 from diffusers import StableDiffusionPipeline
 
-pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", torch_dtype=torch.float16)
-# modelid = "CompVis/stable-diffusion-v1-4"
-# pipe = StableDiffusionPipeline.from_pretrained(modelid, revision="fp16", torch_dtype=torch.float, use_auth_token=auth_token) 
-pipe = pipe.to("cuda")
+# Paste your prompt here
+user_input = ""
+output_file = f"{user_input}.png"
+output_path = os.path.join(os.getcwd(), "generated_images", output_file)
 
-# Abstract painting representing the sound of jazz music, using vibrant colors and erratic shapes
-# prompt = "Surrealist painting of a floating island with giant clock gears, populated with mythical creatures"
-prompt = "Abstract painting representing the sound of jazz music, using vibrant colors and erratic shapes"
-image = pipe(prompt).images[0]  # image here is in [PIL format](https://pillow.readthedocs.io/en/stable/)
+# Define default values
+guidance_scale = 8.5
 
-# Saving the image 
-image.save(f"{prompt}.png")
+model_id = "CompVis/stable-diffusion-v1-4"
+pipe = StableDiffusionPipeline.from_pretrained(model_id, revision="fp16", torch_dtype=torch.float, use_auth_token=auth_token)
+
+# Generate the image
+image = pipe(user_input, guidance_scale=guidance_scale).images[0]
+image.save(output_path)
+
+print(f"Image generated and saved as {output_file}")
