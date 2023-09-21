@@ -1,10 +1,13 @@
+import sys
+sys.stdout.flush()
+
 import os
 import torch
-from authtoken import auth_token
+from auth import auth_token
 from diffusers import StableDiffusionPipeline
 
 # Paste your prompt here
-user_input = ""
+user_input = "abstract art on stone age"
 output_file = f"{user_input}.png"
 output_path = os.path.join(os.getcwd(), "generated_images", output_file)
 

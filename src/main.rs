@@ -6,10 +6,11 @@ fn main() {
     if let Ok(current_dir) = env::current_dir() {
         // Define the filenames you want to run (e.g., "python_script.py" and "js_script.js")
         let python_script = "main.py";
-        let js_script = "js_script.js";
+        let js_script = "index.js";
 
         // Create full paths by joining with the current working directory
         let python_script_path = current_dir.join(python_script);
+        println!("{:?}", python_script_path);
         let js_script_path = current_dir.join(js_script);
 
         // Run the Python script
@@ -24,6 +25,7 @@ fn main() {
             return;
         }
 
+        // Print the Python script output
         let python_stdout = String::from_utf8_lossy(&python_output.stdout);
         println!("Python script output:\n{}", python_stdout);
 
@@ -39,6 +41,7 @@ fn main() {
             return;
         }
 
+        // Print the JavaScript script output
         let js_stdout = String::from_utf8_lossy(&js_output.stdout);
         println!("JavaScript (Node.js) script output:\n{}", js_stdout);
     } else {
