@@ -6,10 +6,10 @@ import "../contracts/src/basicNFT.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract BasicNFTTest is Test {
-    BasicNFT nftContract;
+    basicNFT nftContract;
 
     function setUp() public {
-        nftContract = new BasicNFT();
+        nftContract = new basicNFT();
     }
 
     function testBaseURI() public {
@@ -18,7 +18,7 @@ contract BasicNFTTest is Test {
 
     function testMintAll() public {
         // Mint 5 NFTs.
-        BasicNFT.AllMints[] memory allMints = nftContract.mintAll("0x", 5);
+        basicNFT.AllMints[] memory allMints = nftContract.mintAll("0x", 5);
 
         // Check the total supply of NFTs.
         assertEq(nftContract.totalSupply(), 5);
@@ -31,11 +31,7 @@ contract BasicNFTTest is Test {
     }
 
     function testOnlyOwnerCanMintAll() public {
-        // Create a new address.
-        // address user = vm.addr(1);
-
         // Try to mint all NFTs as the user.
         vm.expectRevert("Must be BasicNFT deployer");
-        // nftContract.connect(user).mintAll("0x", 21);
     }
 }

@@ -3,8 +3,8 @@ sys.stdout.flush()
 
 import os
 import torch
-from auth import auth_token
 from diffusers import StableDiffusionPipeline
+auth_token = os.getenv("AUTH_TOKEN")
 
 # Paste your prompt here
 user_input = "abstract art on stone age"
