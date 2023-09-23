@@ -6,6 +6,9 @@ import "../contracts/src/basicNFT.sol";
 
 contract BasicNFTScript is Script {
     basicNFT nftContract;
+    function deployContract() public {
+        nftContract = new basicNFT();
+    }
 
     function run() public {
         uint private_key = vm.envUint("PRIVATE_KEY");
@@ -13,13 +16,34 @@ contract BasicNFTScript is Script {
         console.log("Account : ", account);
 
         vm.startBroadcast(private_key);
-        
-        nftContract = new basicNFT();
-        nftContract.mintAll(abi.encode(account), 5);
+        // Check if the contract has already been deployed.
+        if (address(nftContract) == address(0)) {
+            deployContract();
+        }
+
+        bytes memory data = abi.encodePacked('{');
+        data = abi.encodePacked(data, '"name": "Image 1",');
+        data = abi.encodePacked(data, '"description":" abstract art",');
+        data = abi.encodePacked(data, '"image": "ipfs://QmQdkFj49dRKmu7uo3jKdgU721QNe2srKNU7zZyPeBLzcN/1.png"');
+        data = abi.encodePacked(data, '}');
+        nftContract.mintAll(data, 5);
         
         vm.stopBroadcast();
     }
 }
+
+//   basicNFT nftContract;
+
+
+//     // Mint NFTs.
+//     bytes memory data = abi.encodePacked('{');
+//     data = abi.encodePacked(data, '"name": "Image 1",');
+//     data = abi.encodePacked(data, '"description":" abstract art",');
+//     data = abi.encodePacked(data, '"image": "ipfs://QmQdkFj49dRKmu7uo3jKdgU721QNe2srKNU7zZyPeBLzcN/1.png"');
+//     data = abi.encodePacked(data, '}');
+
+//     nftContract.mintAll(data, 5);
+// }
 
 // pragma solidity ^0.8.0;
 
