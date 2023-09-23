@@ -7,7 +7,7 @@ import '@openzeppelin/contracts/utils/Strings.sol';
 string constant name = "BasicNFT";
 string constant symbol = "BNFT";
 
-contract basicNFT is ERC721(name, symbol){
+contract basicNFT is ERC721(name, symbol), Ownable{
     using Strings for uint256;
     uint256 public totalSupply;
     address owner;

@@ -1,4 +1,7 @@
 /target
-auth.py
 /out
+/cache
+/broadcast
+
+auth.py
 .env

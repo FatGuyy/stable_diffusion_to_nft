@@ -1390,8 +1390,8 @@
       }
     },
     "script/basicNFT.s.sol": {
-      "lastModificationDate": 1695446377723,
-      "contentHash": "14a79e20ebbef97c3f93980b84ed994c",
+      "lastModificationDate": 1695456342075,
+      "contentHash": "2b3b9bceb546f1fd771c06a811ed0789",
       "sourceName": "script/basicNFT.s.sol",
       "solcConfig": {
         "settings": {
