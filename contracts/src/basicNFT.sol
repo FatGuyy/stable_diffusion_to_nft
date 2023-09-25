@@ -7,7 +7,7 @@ import '@openzeppelin/contracts/utils/Strings.sol';
 string constant name = "BasicNFT";
 string constant symbol = "BNFT";
 
-contract basicNFT is ERC721(name, symbol), Ownable{
+contract basicNFT is ERC721(name, symbol){
     using Strings for uint256;
     uint256 public totalSupply;
     address owner;
@@ -28,8 +28,7 @@ contract basicNFT is ERC721(name, symbol), Ownable{
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
-        // return "https://ipfs.io/ipfs/QmSrSwboxekwhUfK5nKcbzK6xuTmNxhsiz643pmjqJfqPt/";
-        return "https://purple-personal-aardwolf-642.mypinata.cloud/ipfs/QmQdkFj49dRKmu7uo3jKdgU721QNe2srKNU7zZyPeBLzcN/";
+        return "ipfs://QmXPvQwX5B9cuZ7vhQLsY5YJjt6BWvz5f48ihDuDvMKFau/";
     }
 
     function baseURI() public view returns (string memory) {
@@ -37,7 +36,7 @@ contract basicNFT is ERC721(name, symbol), Ownable{
     }
 
     // The Function which mints the ERC721 tokens according to the owner input in loop
-    function mintAll(bytes memory data, uint256 total) onlyOwner public payable returns 
+    function mintAll(bytes memory data, uint256 total) onlyOwner public returns 
     (AllMints[] memory) {
         AllMints[] memory allMints = new AllMints[](total + 1);
         for (uint256 i = 1; i < (total + 1); i++) {

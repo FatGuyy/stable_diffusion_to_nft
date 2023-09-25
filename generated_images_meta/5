@@ -1,0 +1,22 @@
+{
+  "dna": "bb3a5496a0fc4dbca00f587cdfd5e9c7",
+  "name": "NFT #5",
+  "description": null,
+  "image": "ipfs://QmQdkFj49dRKmu7uo3jKdgU721QNe2srKNU7zZyPeBLzcN/5.png",
+  "date": 1690703174513,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "images"
+    },
+    {
+      "trait_type": "Caps",
+      "value": "images-removebg-preview"
+    },
+    {
+      "trait_type": "Characters",
+      "value": "images-removebg-preview (1)"
+    }
+  ],
+  "compiler": "mintables.club"
+}

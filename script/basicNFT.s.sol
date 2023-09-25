@@ -21,12 +21,13 @@ contract BasicNFTScript is Script {
             deployContract();
         }
 
-        bytes memory data = abi.encodePacked('{');
-        data = abi.encodePacked(data, '"name": "Image 1",');
-        data = abi.encodePacked(data, '"description":" abstract art",');
-        data = abi.encodePacked(data, '"image": "ipfs://QmQdkFj49dRKmu7uo3jKdgU721QNe2srKNU7zZyPeBLzcN/"');
-        data = abi.encodePacked(data, '}');
-        nftContract.mintAll(data, 5);
+        // bytes memory data = abi.encodePacked('{');
+        // data = abi.encodePacked(data, '"name": "Image 1",');
+        // data = abi.encodePacked(data, '"description":" abstract art",');
+        // data = abi.encodePacked(data, '"image": "ipfs://QmTdGBBmhz392teFLWorFMkDGFxZPSzLbA76ef33BynaFz/"');
+        // data = abi.encodePacked(data, '}');
+
+        nftContract.mintAll("0x", 7);
         
         vm.stopBroadcast();
     }

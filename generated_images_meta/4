@@ -1,0 +1,22 @@
+{
+  "dna": "22b4a7c7a7814db78c8fba5a9b38d1fc",
+  "name": "NFT #4",
+  "description": null,
+  "image": "ipfs://QmQdkFj49dRKmu7uo3jKdgU721QNe2srKNU7zZyPeBLzcN/4.png",
+  "date": 1690703174513,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "images"
+    },
+    {
+      "trait_type": "Caps",
+      "value": "images-removebg-preview"
+    },
+    {
+      "trait_type": "Characters",
+      "value": "images-removebg-preview (1)"
+    }
+  ],
+  "compiler": "mintables.club"
+}
