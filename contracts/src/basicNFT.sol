@@ -28,7 +28,7 @@ contract basicNFT is ERC721(name, symbol){
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
-        return "ipfs://QmXPvQwX5B9cuZ7vhQLsY5YJjt6BWvz5f48ihDuDvMKFau/";
+        return "ipfs://QmS2cisR8YeGaYwpnam4VjoTSXPmdgfUKyYB9t4w5jrcQs/";
     }
 
     function baseURI() public view returns (string memory) {

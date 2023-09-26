@@ -1,6 +1,5 @@
 # Rename auth_example.py to auth.py, then paste your hugging face key in 
 setup_locally:
-	mv auth_example.py auth.py
 	mv .env.example .env
 
 # Clean the repo
@@ -20,3 +19,5 @@ build  :; forge clean && forge build --optimize --optimizer-runs 1000000
 source_env:
 	source .env
 
+install-pip-req:
+	pip install -r requirements.txt
