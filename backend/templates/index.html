@@ -1,0 +1,20 @@
+{% load static %}
+{% comment %} {% load messages %} {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'favicon.png' %}" rel="icon" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inst-NFT</title>
+</head>
+<body>
+    {% comment %} {% messages %} {% endcomment %}
+    <form action="{% url 'home' %}" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button type="submit"> Upload </button>
+    </form>
+</body>
+</html>
