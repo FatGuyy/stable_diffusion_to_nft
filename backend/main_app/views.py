@@ -1,19 +1,21 @@
 import os
 import subprocess
-from .models import Profile, Image
+from .models import Profile
+from dotenv import load_dotenv
+from .forms import ImageFileForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from .forms import FileUploadForm, ImageFileForm
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
-command = "forge script script/basicNFT.s.sol --rpc-url $RPC_URL --broadcast --private-key $PRIVATE_KEY"
-
-
-project_directory = os.path.dirname(os.getcwd())
-
+# Run Command in terminal
+load_dotenv()
+RPC_URL = os.getenv('RPC_URL')
+PRIVATE_KEY = os.getenv('PRIVATE_KEY')
+COMMAND = f"forge script script/basicNFT.s.sol --rpc-url {RPC_URL} --broadcast --private-key {PRIVATE_KEY}"
+PROJECT_DIRECTORY = os.path.dirname(os.getcwd())
 
 
 @csrf_protect
@@ -22,15 +24,9 @@ def index(request):
     if request.method == 'POST':
         form = ImageFileForm(request.POST, request.FILES)
         if form.is_valid():
-            # form.user_name = request.user
-            # form.images = request.FILES.getlist('images')
             form.save()
-
-            # Process and save images
-            # for image in request.FILES.getlist('images'):
-            #     Image.objects.create(file=image) 
-            print(project_directory)
-            subprocess.run(command, shell=True, cwd=project_directory)
+            subprocess.run(COMMAND, shell=True, cwd=PROJECT_DIRECTORY)
+            print("project dir -",PROJECT_DIRECTORY)
     else:
         form = ImageFileForm()
     return render(request, 'index.html', {'form': form})
