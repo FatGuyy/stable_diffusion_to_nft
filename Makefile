@@ -16,8 +16,16 @@ update:; forge update
 # Builds forge
 build  :; forge clean && forge build --optimize --optimizer-runs 1000000
 
-source_env:
-	source .env
-
+# Install python requirements
 install-pip-req:
 	pip install -r requirements.txt
+
+# Make django migrations
+django-migrations:
+	python3 manage.py makemigrations
+	python3 manage.py migrate
+
+# Run website in django
+run-website:
+	python3 manage.py runserver
+

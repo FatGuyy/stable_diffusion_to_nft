@@ -1,29 +1,38 @@
-from .forms import FileUploadForm
-from .models import Profile
+import os
+import subprocess
+from .models import Profile, Image
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from .forms import FileUploadForm, ImageFileForm
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
+command = "forge script script/basicNFT.s.sol --rpc-url $RPC_URL --broadcast --private-key $PRIVATE_KEY"
 
-# Create your views here.
-# @csrf_protect
+
+project_directory = os.path.dirname(os.getcwd())
+
+
+
+@csrf_protect
+@login_required(login_url='/signin/')
 def index(request):
     if request.method == 'POST':
-        form = FileUploadForm(request.POST, request.FILES)
+        form = ImageFileForm(request.POST, request.FILES)
         if form.is_valid():
-            file_upload = form.save(commit=False)
-            file_upload.save()
+            # form.user_name = request.user
+            # form.images = request.FILES.getlist('images')
+            form.save()
 
             # Process and save images
-            for image in request.FILES.getlist('images'):
-                image.objects.create(file=image, file_upload=file_upload)
-
-            return redirect('success')  # Redirect to a success page
+            # for image in request.FILES.getlist('images'):
+            #     Image.objects.create(file=image) 
+            print(project_directory)
+            subprocess.run(command, shell=True, cwd=project_directory)
     else:
-        form = FileUploadForm()
+        form = ImageFileForm()
     return render(request, 'index.html', {'form': form})
 
 def signup(request):
@@ -48,7 +57,7 @@ def signup(request):
 
                 login(request, user)
                 messages.info(request, 'You are not logged in!')
-                return redirect('/index/')
+                return redirect('/signin/')
         else:
             messages.info(request, 'Password not matching')
 
@@ -56,7 +65,7 @@ def signup(request):
     else:
         return render(request, "signup.html")
 
-# @csrf_protect
+@csrf_protect
 def signin(request):
     if request.method == 'POST':
         username = request.POST['username']
