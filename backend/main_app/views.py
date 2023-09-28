@@ -14,7 +14,7 @@ from django.contrib.auth import authenticate, login, logout
 load_dotenv()
 RPC_URL = os.getenv('RPC_URL')
 PRIVATE_KEY = os.getenv('PRIVATE_KEY')
-COMMAND = f"forge script script/basicNFT.s.sol --rpc-url {RPC_URL} --broadcast --private-key {PRIVATE_KEY}"
+COMMAND = f"forge script script/basicNFT.s.sol --rpc-url {RPC_URL} --broadcast --private-key {PRIVATE_KEY} -- --NFT_METADATA "
 PROJECT_DIRECTORY = os.path.dirname(os.getcwd())
 
 
@@ -25,8 +25,8 @@ def index(request):
         form = ImageFileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            subprocess.run(COMMAND, shell=True, cwd=PROJECT_DIRECTORY)
-            print("project dir -",PROJECT_DIRECTORY)
+            # subprocess.run(COMMAND, shell=True, cwd=PROJECT_DIRECTORY)
+            # print("project dir -",PROJECT_DIRECTORY)
     else:
         form = ImageFileForm()
     return render(request, 'index.html', {'form': form})
@@ -79,3 +79,12 @@ def signin(request):
             return redirect('signin')
     else:
         return render(request, "signin.html")
+
+def mint(request):
+    if request.method == 'POST':
+        CID = request.POST['user_cid']
+        print("cid - ",COMMAND + CID)
+        # subprocess.run(COMMAND + CID, shell=True, cwd=PROJECT_DIRECTORY)
+    else:
+        pass
+    return render(request, 'mint.html')

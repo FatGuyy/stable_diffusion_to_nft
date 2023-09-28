@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'favicon.png' %}" rel="icon" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inst-NFT Mint</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #007bff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="{% url 'mint' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="text_input">CID of metadata:</label>
+            <input type="text" id="text_input" name="user_cid">
+            <br>
+            <button type="submit">Mint</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -27,21 +27,21 @@ contract basicNFT is ERC721(name, symbol){
         _;
     }
 
-    function _baseURI() internal view virtual override returns (string memory) {
-        return "ipfs://QmS2cisR8YeGaYwpnam4VjoTSXPmdgfUKyYB9t4w5jrcQs/";
+    function _baseURI(string memory base_URI) internal view virtual returns (string memory) {
+        return base_URI;
     }
 
-    function baseURI() public view returns (string memory) {
-        return _baseURI();
+    function baseURI(string memory base_URI) public view returns (string memory) {
+        return _baseURI(base_URI);
     }
 
     // The Function which mints the ERC721 tokens according to the owner input in loop
-    function mintAll(bytes memory data, uint256 total) onlyOwner public returns 
+    function mintAll(string memory uri, bytes memory data, uint256 total) onlyOwner public returns 
     (AllMints[] memory) {
         AllMints[] memory allMints = new AllMints[](total + 1);
         for (uint256 i = 1; i < (total + 1); i++) {
             string memory _uri = string(
-                abi.encodePacked(_baseURI(), Strings.toString(i), ".jpg")
+                abi.encodePacked(_baseURI(uri), Strings.toString(i), ".jpg")
             );
             _safeMint(msg.sender, i, data);
             allMints[i] = AllMints(i, _uri);

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "../contracts/src/basicNFT.sol";
+import "../src/basicNFT.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract BasicNFTTest is Test {
@@ -13,12 +13,12 @@ contract BasicNFTTest is Test {
     }
 
     function testBaseURI() public {
-        assertEq(nftContract.baseURI(), "https://purple-personal-aardwolf-642.mypinata.cloud/ipfs/QmcWsozdHAp1chx2XQeqVfEjo1sAjNPViWFdQihkEYmDgU/");
+        assertEq(nftContract.baseURI("ipfs://QmXPvQwX5B9cuZ7vhQLsY5YJjt6BWvz5f48ihDuDvMKFau/"), "ipfs://QmXPvQwX5B9cuZ7vhQLsY5YJjt6BWvz5f48ihDuDvMKFau/");
     }
 
     function testMintAll() public {
         // Mint 5 NFTs.
-        basicNFT.AllMints[] memory allMints = nftContract.mintAll("0x", 5);
+        basicNFT.AllMints[] memory allMints = nftContract.mintAll("ipfs://QmXPvQwX5B9cuZ7vhQLsY5YJjt6BWvz5f48ihDuDvMKFau/", "0x", 5);
 
         // Check the total supply of NFTs.
         assertEq(nftContract.totalSupply(), 5);
