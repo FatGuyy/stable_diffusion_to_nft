@@ -1,4 +1,5 @@
 import os
+import json
 import subprocess
 from .models import Profile
 from dotenv import load_dotenv
@@ -16,6 +17,7 @@ RPC_URL = os.getenv('RPC_URL')
 PRIVATE_KEY = os.getenv('PRIVATE_KEY')
 COMMAND = f"forge script script/basicNFT.s.sol --rpc-url {RPC_URL} --broadcast --private-key {PRIVATE_KEY} -- --NFT_METADATA "
 PROJECT_DIRECTORY = os.path.dirname(os.getcwd())
+# print(PROJECT_DIRECTORY)
 
 
 @csrf_protect
@@ -81,10 +83,16 @@ def signin(request):
         return render(request, "signin.html")
 
 def mint(request):
+    # print("some - ",PROJECT_DIRECTORY + "/config.json")
     if request.method == 'POST':
         CID = request.POST['user_cid']
-        print("cid - ",COMMAND + CID)
-        # subprocess.run(COMMAND + CID, shell=True, cwd=PROJECT_DIRECTORY)
+        config_data = {
+            "uri":CID
+        }
+        with open((PROJECT_DIRECTORY +"/config.sol"), "w") as file:
+            json.dump(config_data, file)
+
+        subprocess.run(COMMAND + CID, shell=True, cwd=PROJECT_DIRECTORY)
     else:
         pass
     return render(request, 'mint.html')
